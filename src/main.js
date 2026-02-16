@@ -15,7 +15,6 @@ import socket from "./mixins/socket";
 import theme from "./mixins/theme";
 import lang from "./mixins/lang";
 import { router } from "./router";
-import { appName } from "./util.ts";
 import dayjs from "dayjs";
 import timezone from "./modules/dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
@@ -25,11 +24,13 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(relativeTime);
 
+const APP_NAME = "Omid Bank monitoring";
+
 const app = createApp({
     mixins: [socket, theme, mobile, datetime, publicMixin, lang],
     data() {
         return {
-            appName: appName,
+            appName: APP_NAME,
         };
     },
     render: () => h(App),
