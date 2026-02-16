@@ -1,9 +1,13 @@
 services:
   uptime-kuma:
-    image: louislam/uptime-kuma:2
+    build:
+      context: .
+      dockerfile: docker/dockerfile
+      target: release
+    image: omid-bank-monitoring:local
     restart: unless-stopped
     volumes:
       - ./data:/app/data
     ports:
       # <Host Port>:<Container Port>
-      - "3001:3001"
+      - "3002:3001"
