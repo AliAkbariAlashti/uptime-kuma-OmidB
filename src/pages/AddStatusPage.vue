@@ -74,7 +74,7 @@ export default {
     components: {},
     data() {
         return {
-            title: "",
+            title: "Omid Bank monitoring Status Page",
             slug: "",
             processing: false,
         };

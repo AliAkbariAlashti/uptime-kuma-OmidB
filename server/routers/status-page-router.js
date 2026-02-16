@@ -124,6 +124,9 @@ router.get("/api/status-page/:slug/manifest.json", cache("1440 minutes"), async 
             return;
         }
 
+        const iconSrc = statusPage.icon || "/icon-192x192.png";
+        const iconIsSvg = iconSrc.endsWith(".svg") || iconSrc.startsWith("data:image/svg+xml");
+
         // Response
         response.json({
             name: statusPage.title,
@@ -131,9 +134,9 @@ router.get("/api/status-page/:slug/manifest.json", cache("1440 minutes"), async 
             display: "standalone",
             icons: [
                 {
-                    src: statusPage.icon,
-                    sizes: "128x128",
-                    type: "image/png",
+                    src: iconSrc,
+                    sizes: iconIsSvg ? "any" : "192x192",
+                    type: iconIsSvg ? "image/svg+xml" : "image/png",
                 },
             ],
         });

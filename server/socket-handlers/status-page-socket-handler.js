@@ -453,9 +453,12 @@ module.exports.statusPageSocketHandler = (socket) => {
             let statusPage = R.dispense("status_page");
             statusPage.slug = slug;
             statusPage.title = title;
-            statusPage.theme = "auto";
-            statusPage.icon = "";
-            statusPage.autoRefreshInterval = 300;
+            statusPage.description = "Official Omid Bank service status page.";
+            statusPage.theme = "light";
+            statusPage.icon = "/icon.svg";
+            statusPage.autoRefreshInterval = 60;
+            statusPage.footer_text = "Omid Bank monitoring";
+            statusPage.show_powered_by = false;
             await R.store(statusPage);
 
             callback({

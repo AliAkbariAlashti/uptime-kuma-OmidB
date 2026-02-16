@@ -80,7 +80,7 @@ class StatusPage extends BeanModel {
         const { heartbeats, statusDescription } = await StatusPage.getRSSPageData(statusPage);
 
         // Use custom RSS title if set, otherwise fall back to status page title
-        let feedTitle = "Uptime Kuma RSS Feed";
+        let feedTitle = "Omid Bank monitoring RSS Feed";
         if (statusPage.rss_title) {
             feedTitle = statusPage.rss_title;
         } else if (statusPage.title) {
@@ -437,14 +437,14 @@ class StatusPage extends BeanModel {
             title: this.title,
             description: this.description,
             icon: this.getIcon(),
-            theme: this.theme,
+            theme: this.theme || "light",
             autoRefreshInterval: this.autoRefreshInterval,
             published: !!this.published,
             showTags: !!this.show_tags,
             domainNameList: this.getDomainNameList(),
             customCSS: this.custom_css,
-            footerText: this.footer_text,
-            showPoweredBy: !!this.show_powered_by,
+            footerText: this.footer_text || "Omid Bank monitoring",
+            showPoweredBy: this.show_powered_by == null ? false : !!this.show_powered_by,
             analyticsId: this.analytics_id,
             analyticsScriptUrl: this.analytics_script_url,
             analyticsType: this.analytics_type,
@@ -466,12 +466,12 @@ class StatusPage extends BeanModel {
             description: this.description,
             icon: this.getIcon(),
             autoRefreshInterval: this.autoRefreshInterval,
-            theme: this.theme,
+            theme: this.theme || "light",
             published: !!this.published,
             showTags: !!this.show_tags,
             customCSS: this.custom_css,
-            footerText: this.footer_text,
-            showPoweredBy: !!this.show_powered_by,
+            footerText: this.footer_text || "Omid Bank monitoring",
+            showPoweredBy: this.show_powered_by == null ? false : !!this.show_powered_by,
             analyticsId: this.analytics_id,
             analyticsScriptUrl: this.analytics_script_url,
             analyticsType: this.analytics_type,
