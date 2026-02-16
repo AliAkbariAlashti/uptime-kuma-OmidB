@@ -17,7 +17,7 @@ class LunaSea extends NotificationProvider {
             const target = this.getTarget(notification);
             if (heartbeatJSON == null) {
                 let testdata = {
-                    title: "Uptime Kuma Alert",
+                    title: "Omid Bank monitoring Alert",
                     body: msg,
                 };
                 await axios.post(`${url}/custom/${target}`, testdata, config);
@@ -26,7 +26,7 @@ class LunaSea extends NotificationProvider {
 
             if (heartbeatJSON["status"] === DOWN) {
                 let downdata = {
-                    title: "UptimeKuma Alert: " + monitorJSON["name"],
+                    title: "Omid Bank monitoring Alert: " + monitorJSON["name"],
                     body:
                         "[🔴 Down] " +
                         heartbeatJSON["msg"] +
@@ -38,7 +38,7 @@ class LunaSea extends NotificationProvider {
 
             if (heartbeatJSON["status"] === UP) {
                 let updata = {
-                    title: "UptimeKuma Alert: " + monitorJSON["name"],
+                    title: "Omid Bank monitoring Alert: " + monitorJSON["name"],
                     body:
                         "[✅ Up] " +
                         heartbeatJSON["msg"] +

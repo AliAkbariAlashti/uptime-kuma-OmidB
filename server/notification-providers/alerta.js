@@ -22,7 +22,7 @@ class Alerta extends NotificationProvider {
                 environment: notification.alertaEnvironment,
                 severity: "critical",
                 correlate: [],
-                service: ["UptimeKuma"],
+                service: ["Omid Bank monitoring"],
                 value: "Timeout",
                 tags: ["uptimekuma"],
                 attributes: {},

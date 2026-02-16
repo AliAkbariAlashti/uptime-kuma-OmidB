@@ -534,7 +534,7 @@ class UptimeKumaServer {
      * @returns {string} User-Agent
      */
     getUserAgent() {
-        return "Uptime-Kuma/" + require("../package.json").version;
+        return "Omid-Bank-monitoring/" + require("../package.json").version;
     }
 
     /**

@@ -13,21 +13,21 @@ class Splunk extends NotificationProvider {
     async send(notification, msg, monitorJSON = null, heartbeatJSON = null) {
         try {
             if (heartbeatJSON == null) {
-                const title = "Uptime Kuma Alert";
+                const title = "Omid Bank monitoring Alert";
                 const monitor = {
                     type: "ping",
-                    url: "Uptime Kuma Test Button",
+                    url: "Omid Bank monitoring Test Button",
                 };
                 return this.postNotification(notification, title, msg, monitor, "trigger");
             }
 
             if (heartbeatJSON.status === UP) {
-                const title = "Uptime Kuma Monitor ✅ Up";
+                const title = "Omid Bank monitoring Monitor ✅ Up";
                 return this.postNotification(notification, title, heartbeatJSON.msg, monitorJSON, "recovery");
             }
 
             if (heartbeatJSON.status === DOWN) {
-                const title = "Uptime Kuma Monitor 🔴 Down";
+                const title = "Omid Bank monitoring Monitor 🔴 Down";
                 return this.postNotification(notification, title, heartbeatJSON.msg, monitorJSON, "trigger");
             }
         } catch (error) {
@@ -88,15 +88,15 @@ class Splunk extends NotificationProvider {
             data: {
                 message_type: eventAction,
                 state_message: `[${title}] [${monitorUrl}] ${body}`,
-                entity_display_name: "Uptime Kuma Alert: " + monitorInfo.name,
+                entity_display_name: "Omid Bank monitoring Alert: " + monitorInfo.name,
                 routing_key: notification.pagerdutyIntegrationKey,
-                entity_id: "Uptime Kuma/" + monitorInfo.id,
+                entity_id: "Omid Bank monitoring/" + monitorInfo.id,
             },
         };
 
         const baseURL = await setting("primaryBaseURL");
         if (baseURL && monitorInfo) {
-            options.client = "Uptime Kuma";
+            options.client = "Omid Bank monitoring";
             options.client_url = baseURL + getMonitorRelativeURL(monitorInfo.id);
         }
 

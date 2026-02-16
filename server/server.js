@@ -1,9 +1,9 @@
 /*
- * Uptime Kuma Server
+ * Omid Bank monitoring Server
  * node "server/server.js"
  * DO NOT require("./server") in other modules, it likely creates circular dependency!
  */
-console.log("Welcome to Uptime Kuma");
+console.log("Welcome to Omid Bank monitoring");
 
 // As the log function need to use dayjs, it should be very top
 const dayjs = require("dayjs");
@@ -28,7 +28,7 @@ const requiredNodeVersionsComma = requiredNodeVersions
     .map((version) => version.trim())
     .join(", ");
 
-// Exit Uptime Kuma immediately if the Node.js version is banned
+// Exit Omid Bank monitoring immediately if the Node.js version is banned
 if (semver.satisfies(nodeVersion, bannedNodeVersions)) {
     console.error(
         "\x1b[31m%s\x1b[0m",
@@ -68,7 +68,7 @@ if (process.env.UPTIME_KUMA_WS_ORIGIN_CHECK === "bypass") {
 }
 
 const checkVersion = require("./check-version");
-log.info("server", "Uptime Kuma Version:", checkVersion.version);
+log.info("server", "Omid Bank monitoring Version:", checkVersion.version);
 
 log.info("server", "Loading modules");
 
@@ -689,7 +689,7 @@ let needSetup = false;
 
                 if ((await R.knex("user").count("id as count").first()).count !== 0) {
                     throw new Error(
-                        "Uptime Kuma has been initialized. If you want to run setup again, please delete the database."
+                        "Omid Bank monitoring has been initialized. If you want to run setup again, please delete the database."
                     );
                 }
 
@@ -1848,7 +1848,7 @@ async function initDatabase(testMode = false) {
         log.debug("server", "Load JWT secret from database.");
     }
 
-    // If there is no record in user table, it is a new Uptime Kuma instance, need to setup
+    // If there is no record in user table, it is a new Omid Bank monitoring instance, need to setup
     if ((await R.knex("user").count("id as count").first()).count === 0) {
         log.info("server", "No user, need setup");
         needSetup = true;
